@@ -8,95 +8,89 @@
   :root{
     --ink:#0f2233; --surface:#ffffff; --bg:#eaeef2; --panel:#f4f7f9;
     --line:#d6dde4; --muted:#5f6c79; --accent:#0e7c86; --accent2:#11616a;
-    --green:#1f9d57; --amber:#cf8a17; --red:#c5453b; --pending:#9a6a12;
+    --green:#1f9d57; --amber:#cf8a17; --red:#c5453b; --pending:#9a6a12; --needs:#b4451f;
     --mono:"SF Mono","Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased}
   .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
-  .wrap{max-width:1120px;margin:0 auto;padding:22px 20px 60px}
-
-  /* top bar */
-  .topbar{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:22px}
+  .wrap{max-width:1140px;margin:0 auto;padding:22px 20px 60px}
+  .topbar{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:20px}
   .brand h1{font-size:24px;font-weight:800;letter-spacing:-0.5px}
   .brand .sub{color:var(--muted);font-size:13.5px;margin-top:2px}
-  .legend{display:flex;gap:16px;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
+  .legend{display:flex;gap:15px;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
   .legend span{display:inline-flex;align-items:center;gap:6px}
-  .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
-  .dot.live{background:var(--accent)}
-  .dot.pend{background:transparent;border:2px solid var(--pending)}
-  .dot.deal{background:transparent;border:2px dashed var(--muted)}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+  .dot.live{background:var(--accent)} .dot.prov{background:transparent;border:2px solid var(--pending)} .dot.needs{background:transparent;border:2px dashed var(--needs)}
 
-  /* hero verdict */
-  .verdict{display:grid;grid-template-columns:230px 1fr;gap:0;background:var(--ink);color:#fff;border-radius:12px;overflow:hidden;margin-bottom:20px}
-  .signal{padding:26px 22px;display:flex;flex-direction:column;justify-content:center;gap:14px;border-right:1px solid rgba(255,255,255,.1)}
-  .lamp{display:flex;gap:10px;align-items:center}
-  .bulb{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.12)}
-  .bulb.on.g{background:var(--green);box-shadow:0 0 16px var(--green)}
-  .bulb.on.a{background:var(--amber);box-shadow:0 0 16px var(--amber)}
-  .bulb.on.r{background:var(--red);box-shadow:0 0 16px var(--red)}
-  #verdictWord{font-size:21px;font-weight:800;letter-spacing:-0.3px}
-  #verdictNote{font-size:12.5px;color:#b9c6d2;max-width:190px}
-  .qa{padding:22px 24px;display:flex;flex-direction:column;gap:14px}
-  .qa .q{font-size:15px;font-weight:600;color:#cdd8e2}
-  .drivers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 16px}
-  .field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#9fb0bf;margin-bottom:3px}
-  .field .inputrow{display:flex;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:7px;padding:3px 9px}
-  .field .inputrow.pend{border-color:rgba(207,138,23,.7);border-style:dashed}
+  .verdict{display:grid;grid-template-columns:236px 1fr;background:var(--ink);color:#fff;border-radius:12px;overflow:hidden;margin-bottom:18px}
+  .signal{padding:24px 22px;display:flex;flex-direction:column;justify-content:center;gap:13px;border-right:1px solid rgba(255,255,255,.1)}
+  .lamp{display:flex;gap:10px}
+  .bulb{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.12)}
+  .bulb.on.g{background:var(--green);box-shadow:0 0 15px var(--green)} .bulb.on.a{background:var(--amber);box-shadow:0 0 15px var(--amber)} .bulb.on.r{background:var(--red);box-shadow:0 0 15px var(--red)}
+  #verdictWord{font-size:20px;font-weight:800} #verdictNote{font-size:12px;color:#b9c6d2;max-width:196px;margin-top:5px}
+  .qa{padding:20px 24px}
+  .qa .q{font-size:14px;font-weight:600;color:#cdd8e2;margin-bottom:13px}
+  .drivers{display:grid;grid-template-columns:repeat(3,1fr);gap:11px 15px}
+  .field label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:#9fb0bf;margin-bottom:3px;display:flex;align-items:center;gap:5px}
+  .field .inputrow{display:flex;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:7px;padding:2px 9px}
+  .field .inputrow.prov{border-color:rgba(207,138,23,.6);border-style:dashed}
+  .field .inputrow.needs{border-color:var(--needs);border-style:dashed;background:rgba(180,69,31,.12)}
   .field .pfx{color:#9fb0bf;font-size:13px}
-  .field input{background:transparent;border:none;color:#fff;font-family:var(--mono);font-size:15px;width:100%;padding:5px 4px;outline:none;text-align:right}
-  .freecap{display:flex;align-items:baseline;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:12px}
-  .freecap .lbl{font-size:12.5px;color:#9fb0bf}
-  .freecap .val{font-size:24px;font-weight:800}
+  .field input{background:transparent;border:none;color:#fff;font-family:var(--mono);font-size:14.5px;width:100%;padding:5px 4px;outline:none;text-align:right}
+  .freecap{display:flex;align-items:baseline;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:11px;margin-top:14px}
+  .freecap .lbl{font-size:12px;color:#9fb0bf} .freecap .val{font-size:23px;font-weight:800}
 
-  /* kpi strip */
-  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
-  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:15px 16px;position:relative}
-  .kpi.pend{border-style:dashed;border-color:var(--pending);background:#fdfaf3}
-  .kpi .k-lbl{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:6px}
-  .kpi .k-val{font-size:25px;font-weight:800;margin-top:8px}
-  .kpi .k-val.pos{color:var(--green)} .kpi .k-val.neg{color:var(--red)}
-  .kpi .k-sub{font-size:11.5px;color:var(--muted);margin-top:3px}
-  .tag{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 6px;border-radius:4px;vertical-align:middle}
-  .tag.live{background:#e2f0f1;color:var(--accent2)}
-  .tag.pend{background:#f6ead0;color:var(--pending)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:20px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi.prov{border-style:dashed;border-color:var(--pending);background:#fdfaf3}
+  .kpi .k-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:6px}
+  .kpi .k-val{font-size:23px;font-weight:800;margin-top:7px} .kpi .k-val.pos{color:var(--green)} .kpi .k-val.neg{color:var(--red)}
+  .kpi .k-sub{font-size:11px;color:var(--muted);margin-top:3px}
 
-  /* sections */
-  .grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-bottom:22px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
-  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+  .grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-bottom:18px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:17px 19px}
+  .card h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:13px;display:flex;justify-content:space-between;align-items:center}
   .card h2 .hint{font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)}
   svg{display:block;width:100%;height:auto}
-  .balloon{margin-top:10px;font-size:12px;color:var(--red);display:flex;gap:7px;align-items:flex-start}
+  .balloon{margin-top:9px;font-size:11.5px;color:var(--red);display:flex;gap:7px}
 
-  /* money rows */
   .rows{display:flex;flex-direction:column}
-  .row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #eef2f5;font-size:13.5px}
+  .row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #eef2f5;font-size:13px}
   .row:last-child{border-bottom:none}
   .row .r-l{display:flex;align-items:center;gap:8px;color:#33424f}
-  .row .r-note{font-size:11px;color:var(--muted)}
   .row .r-v{font-family:var(--mono);font-variant-numeric:tabular-nums}
-  .row.sum{border-top:2px solid var(--ink);border-bottom:none;margin-top:4px;padding-top:9px;font-weight:700}
-  .opexrow input{width:96px;text-align:right;font-family:var(--mono);font-size:13.5px;border:1px dashed var(--pending);border-radius:6px;padding:4px 7px;background:#fdfaf3;outline:none}
+  .row.sum{border-top:2px solid var(--ink);border-bottom:none;margin-top:3px;padding-top:8px;font-weight:700}
+  .row.subtle .r-l{color:var(--muted)}
+  .row input{width:84px;text-align:right;font-family:var(--mono);font-size:13px;border:1px dashed var(--pending);border-radius:6px;padding:3px 6px;background:#fdfaf3;outline:none}
 
-  /* property + pipeline */
-  .props{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px}
-  .prop{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 17px}
+  .props{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+  .prop{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:15px 16px}
   .prop.pipeline{border-style:dashed;border-color:var(--muted);background:#fafbfc}
-  .prop .p-name{font-weight:700;font-size:15px}
-  .prop .p-status{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent2);margin-top:2px}
+  .prop .p-name{font-weight:700;font-size:14.5px}
+  .prop .p-status{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent2);margin-top:2px}
   .prop.pipeline .p-status{color:var(--muted)}
-  .prop .p-line{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid #f0f3f5}
+  .prop .p-line{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-bottom:1px solid #f0f3f5}
   .prop .p-line:last-child{border-bottom:none}
-  .prop .p-line .v{font-family:var(--mono);font-variant-numeric:tabular-nums}
-  .prop .p-net{margin-top:8px;font-size:12px;color:var(--green);font-weight:600}
+  .prop .p-line .v{font-family:var(--mono)}
+  .prop .p-net{margin-top:7px;font-size:11.5px;color:var(--green);font-weight:600}
 
-  .foot{margin-top:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
+  .decisions{background:#fdf6e9;border:1px solid #e6cd97;border-radius:10px;padding:17px 19px;margin-top:18px}
+  .decisions h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--pending);margin-bottom:6px}
+  .decisions p.intro{font-size:12.5px;color:#7a5a17;margin-bottom:11px}
+  .decisions ol{margin:0;padding-left:20px}
+  .decisions li{font-size:12.5px;color:#4a3a1a;padding:4px 0;line-height:1.5}
+  .decisions li b{color:#3a2d12}
+
+  .actuals{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:18px}
+  .stat{background:var(--ink);color:#fff;border-radius:10px;padding:15px 17px}
+  .stat .s-lbl{font-size:11px;color:#9fb0bf;text-transform:uppercase;letter-spacing:.04em}
+  .stat .s-val{font-size:22px;font-weight:800;margin-top:5px}
+  .stat .s-sub{font-size:11px;color:#9fb0bf;margin-top:3px}
+
+  .foot{margin-top:22px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:13px;line-height:1.6}
   .foot strong{color:var(--ink)}
-  @media(max-width:840px){
-    .verdict{grid-template-columns:1fr}.signal{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
-    .kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.props{grid-template-columns:1fr}.drivers{grid-template-columns:repeat(2,1fr)}
-  }
+  @media(max-width:860px){.verdict{grid-template-columns:1fr}.signal{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.props,.actuals{grid-template-columns:1fr}.drivers{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -104,210 +98,191 @@
 
   <div class="topbar">
     <div class="brand">
-      <h1>PJ&amp;CJ — Capital Allocation</h1>
+      <h1>PJ&CJ — Capital Allocation</h1>
       <div class="sub">Can I safely start another deal right now without a cash crunch later?</div>
     </div>
     <div class="legend">
-      <span><i class="dot live"></i> Live from master data</span>
-      <span><i class="dot pend"></i> Awaiting Sunny's financials</span>
-      <span><i class="dot deal"></i> Pending Pheasant</span>
+      <span><i class="dot live"></i> Sourced (master + Jan–May financials)</span>
+      <span><i class="dot prov"></i> Provisional (balance sheet being reworked)</span>
+      <span><i class="dot needs"></i> Needs Phillip</span>
     </div>
   </div>
 
-  <!-- VERDICT COCKPIT -->
   <div class="verdict">
     <div class="signal">
-      <div class="lamp">
-        <div class="bulb r" id="bR"></div><div class="bulb a" id="bA"></div><div class="bulb g" id="bG"></div>
-      </div>
-      <div>
-        <div id="verdictWord">Enter liquidity</div>
-        <div id="verdictNote">Type your available cash, credit line, and next-deal cost to get a reading.</div>
-      </div>
+      <div class="lamp"><div class="bulb r" id="bR"></div><div class="bulb a" id="bA"></div><div class="bulb g" id="bG"></div></div>
+      <div><div id="verdictWord">—</div><div id="verdictNote">—</div></div>
     </div>
     <div class="qa">
       <div class="q">Run the numbers on your next deal</div>
       <div class="drivers">
-        <div class="field"><label>Operating cash</label><div class="inputrow pend"><span class="pfx">$</span><input id="cash" value="2393" inputmode="numeric"></div></div>
-        <div class="field"><label>Business LOC avail.</label><div class="inputrow pend"><span class="pfx">$</span><input id="loc" value="0" inputmode="numeric"></div></div>
-        <div class="field"><label>HELOC available</label><div class="inputrow pend"><span class="pfx">$</span><input id="heloc" value="0" inputmode="numeric"></div></div>
-        <div class="field"><label>Cash for next deal</label><div class="inputrow deal" style="border-style:dashed"><span class="pfx">$</span><input id="deal" value="0" inputmode="numeric"></div></div>
-        <div class="field"><label>Safety buffer</label><div class="inputrow"><span class="pfx">$</span><input id="buffer" value="10000" inputmode="numeric"></div></div>
-        <div class="field"><label>Monthly op. expenses</label><div class="inputrow pend"><span class="pfx">$</span><input id="opex" value="0" inputmode="numeric"></div></div>
+        <div class="field"><label><i class="dot prov"></i> Operating cash</label><div class="inputrow prov"><span class="pfx">$</span><input id="cash" value="34455"></div></div>
+        <div class="field"><label><i class="dot needs"></i> Business LOC avail.</label><div class="inputrow needs"><span class="pfx">$</span><input id="loc" value="0"></div></div>
+        <div class="field"><label><i class="dot needs"></i> HELOC available</label><div class="inputrow needs"><span class="pfx">$</span><input id="heloc" value="0"></div></div>
+        <div class="field"><label>Cash for next deal</label><div class="inputrow" style="border-style:dashed"><span class="pfx">$</span><input id="deal" value="65500"></div></div>
+        <div class="field"><label>Safety buffer</label><div class="inputrow"><span class="pfx">$</span><input id="buffer" value="10000"></div></div>
+        <div class="field"><label>Monthly surplus (after draws)</label><div class="inputrow"><span class="pfx">$</span><input id="netShow" value="0" readonly style="opacity:.85"></div></div>
       </div>
-      <div class="freecap">
-        <span class="lbl">Free capital after this deal</span>
-        <span class="val num" id="freecap">$2,393</span>
-      </div>
+      <div class="freecap"><span class="lbl">Free capital after this deal (cash + credit − deal)</span><span class="val num" id="freecap">—</span></div>
     </div>
   </div>
 
-  <!-- KPI STRIP -->
   <div class="kpis">
-    <div class="kpi">
-      <div class="k-lbl"><i class="dot live"></i> Monthly money in</div>
-      <div class="k-val num">$9,708</div>
-      <div class="k-sub">leases, rents &amp; loan repayment</div>
-    </div>
-    <div class="kpi">
-      <div class="k-lbl"><i class="dot live"></i> Known monthly costs</div>
-      <div class="k-val num">$3,588</div>
-      <div class="k-sub">mortgages + building lease</div>
-    </div>
-    <div class="kpi pend">
-      <div class="k-lbl"><i class="dot pend"></i> Net per month</div>
-      <div class="k-val num pos" id="netVal">$6,120</div>
-      <div class="k-sub" id="netSub">excludes op. expenses — add above</div>
-    </div>
-    <div class="kpi">
-      <div class="k-lbl"><i class="dot live"></i> Rental equity held</div>
-      <div class="k-val num">$136K</div>
-      <div class="k-sub">Woodlawn + Rosebud</div>
-    </div>
+    <div class="kpi"><div class="k-lbl"><i class="dot live"></i> Monthly money in</div><div class="k-val num" id="kIn">—</div><div class="k-sub">consulting, commission, leases, rents</div></div>
+    <div class="kpi"><div class="k-lbl"><i class="dot live"></i> Monthly costs</div><div class="k-val num" id="kOut">—</div><div class="k-sub">operating + mortgages + draws</div></div>
+    <div class="kpi"><div class="k-lbl"><i class="dot live"></i> Monthly surplus</div><div class="k-val num pos" id="kNet">—</div><div class="k-sub">after owner draws</div></div>
+    <div class="kpi prov"><div class="k-lbl"><i class="dot prov"></i> Cash on hand</div><div class="k-val num" id="kCash">—</div><div class="k-sub">5/31 financials — confirm current</div></div>
   </div>
 
-  <!-- FORECAST + MONEY FLOW -->
   <div class="grid2">
     <div class="card">
       <h2>Cash Flow Forecast <span class="hint">operating cash, next 12 months</span></h2>
-      <svg id="chart" viewBox="0 0 640 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Projected operating cash over 12 months"></svg>
-      <div class="balloon">⚠ <span><strong>Rosebud balloon:</strong> ~$88,800 due May 1, 2028 (beyond this 12-month window) — refinance or payoff plan needed before then.</span></div>
+      <svg id="chart" viewBox="0 0 640 250" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Projected operating cash"></svg>
+      <div class="balloon">⚠ <span><strong>Rosebud balloon:</strong> ~$88,800 due May 1 2028 (beyond this window) — refinance/payoff plan needed.</span></div>
     </div>
     <div class="card">
-      <h2>Monthly Cash Flow</h2>
+      <h2>Monthly Cash Flow <span class="hint">run-rate</span></h2>
       <div class="rows">
-        <div class="row"><span class="r-l"><i class="dot live"></i> STFD equipment lease</span><span class="r-v">$2,975</span></div>
-        <div class="row"><span class="r-l"><i class="dot live"></i> STFS equipment lease</span><span class="r-v">$500</span></div>
+        <div class="row"><span class="r-l"><i class="dot live"></i> Consulting income</span><span>$<input id="consulting" value="22000"></span></div>
+        <div class="row"><span class="r-l"><i class="dot live"></i> Commission</span><span>$<input id="commission" value="12980"></span></div>
+        <div class="row"><span class="r-l"><i class="dot live"></i> Equipment leases (STFD+STFS)</span><span class="r-v">$3,475</span></div>
         <div class="row"><span class="r-l"><i class="dot live"></i> Building sublease</span><span class="r-v">$2,000</span></div>
-        <div class="row"><span class="r-l"><i class="dot live"></i> Woodlawn rent</span><span class="r-v">$1,600</span></div>
-        <div class="row"><span class="r-l"><i class="dot live"></i> Rosebud rent</span><span class="r-v">$2,200</span></div>
+        <div class="row"><span class="r-l"><i class="dot live"></i> Home rents</span><span class="r-v">$3,800</span></div>
         <div class="row"><span class="r-l"><i class="dot live"></i> Loan repayment (Paul)</span><span class="r-v">$433</span></div>
-        <div class="row sum"><span class="r-l">Money in</span><span class="r-v">$9,708</span></div>
-        <div class="row" style="margin-top:8px"><span class="r-l"><i class="dot live"></i> Woodlawn mortgage</span><span class="r-v">−$829</span></div>
-        <div class="row"><span class="r-l"><i class="dot live"></i> Rosebud note</span><span class="r-v">−$1,309</span></div>
-        <div class="row"><span class="r-l"><i class="dot live"></i> Building lease <span class="r-note">(paid yearly)</span></span><span class="r-v">−$1,450</span></div>
-        <div class="row opexrow"><span class="r-l"><i class="dot pend"></i> Operating expenses</span><span>−$<input id="opex2" value="0" inputmode="numeric"></span></div>
-        <div class="row sum"><span class="r-l">Net per month</span><span class="r-v" id="netRow">$6,120</span></div>
+        <div class="row sum"><span class="r-l">Money in</span><span class="r-v" id="rowIn">—</span></div>
+        <div class="row" style="margin-top:6px"><span class="r-l"><i class="dot live"></i> Operating expenses</span><span>−$<input id="opex" value="7617"></span></div>
+        <div class="row"><span class="r-l"><i class="dot live"></i> Home mortgages (carry)</span><span class="r-v">−$2,138</span></div>
+        <div class="row"><span class="r-l"><i class="dot live"></i> Owner draws</span><span>−$<input id="draws" value="13150"></span></div>
+        <div class="row sum"><span class="r-l">Net per month</span><span class="r-v" id="rowNet">—</span></div>
       </div>
     </div>
   </div>
 
-  <!-- PROPERTIES + PIPELINE -->
-  <div class="card" style="margin-bottom:0">
-    <h2>Properties &amp; Pipeline</h2>
+  <div class="card" style="margin-bottom:18px">
+    <h2>Properties & Pipeline</h2>
     <div class="props">
       <div class="prop">
-        <div class="p-name">3509 Woodlawn St</div>
-        <div class="p-status">Owned · Leased</div>
-        <div style="margin-top:10px">
+        <div class="p-name">3509 Woodlawn St</div><div class="p-status">Owned · Leased</div>
+        <div style="margin-top:9px">
           <div class="p-line"><span>Value</span><span class="v">$180,000</span></div>
           <div class="p-line"><span>Owed</span><span class="v">$54,000</span></div>
           <div class="p-line"><span>Equity</span><span class="v">$126,000</span></div>
           <div class="p-line"><span>Rent</span><span class="v">$1,600</span></div>
-        </div>
-        <div class="p-net">+$771 / mo after carry</div>
+        </div><div class="p-net">+$771 / mo after carry</div>
       </div>
       <div class="prop">
-        <div class="p-name">1902 E Rosebud Ave</div>
-        <div class="p-status">Owned · Leased</div>
-        <div style="margin-top:10px">
-          <div class="p-line"><span>Purchase</span><span class="v">$99,885</span></div>
+        <div class="p-name">1902 E Rosebud Ave</div><div class="p-status">Owned · Leased</div>
+        <div style="margin-top:9px">
+          <div class="p-line"><span>All-in cash invested</span><span class="v">$65,563</span></div>
           <div class="p-line"><span>Owed (wrap)</span><span class="v">$89,885</span></div>
           <div class="p-line"><span>Rent</span><span class="v">$2,200</span></div>
           <div class="p-line"><span>Balloon</span><span class="v">May 2028</span></div>
-        </div>
-        <div class="p-net">+$891 / mo after carry</div>
+        </div><div class="p-net">+$891 / mo after carry</div>
       </div>
       <div class="prop pipeline">
-        <div class="p-name">Pheasant</div>
-        <div class="p-status">Offer submitted · awaiting acceptance</div>
-        <div style="margin-top:10px">
+        <div class="p-name">Pheasant</div><div class="p-status">Offer submitted · awaiting acceptance</div>
+        <div style="margin-top:9px">
           <div class="p-line"><span>Purchase</span><span class="v">TBD</span></div>
-          <div class="p-line"><span>Rehab</span><span class="v">TBD</span></div>
-          <div class="p-line"><span>Cash required</span><span class="v">TBD</span></div>
+          <div class="p-line"><span>Est. cash need</span><span class="v">~$65K?</span></div>
           <div class="p-line"><span>Status</span><span class="v">Pending</span></div>
-        </div>
-        <div class="p-net" style="color:var(--muted)">Becomes first pipeline entry once accepted</div>
+          <div class="p-line"><span>Comp</span><span class="v">Rosebud</span></div>
+        </div><div class="p-net" style="color:var(--muted)">Model like Rosebud once accepted</div>
       </div>
     </div>
   </div>
 
+  <div class="decisions">
+    <h2>Defaults & decisions to confirm with Phillip</h2>
+    <p class="intro">Every figure below is a working default. Adjust the editable fields above to see the signal and forecast respond.</p>
+    <ol>
+      <li><b>Consulting ($22,000/mo)</b> and <b>commission ($12,980/mo)</b> are Jan–May averages. Confirm whether they're steady/contracted or lumpy — they're the largest inflows, so this drives everything.</li>
+      <li><b>Owner draws ($13,150/mo)</b> are the Jan–May average. Discretionary — set to your actual plan; lowering them frees deal capital fast.</li>
+      <li><b>Operating cash ($34,455)</b> is the 5/31 financials figure. The bank app showed $2,393 on 6/24 — <b>confirm the current balance</b> (Sunny is reworking the balance sheet).</li>
+      <li><b>LOC & HELOC availability</b> — not in any statement. Enter real numbers to make the deal-readiness signal real.</li>
+      <li><b>Next-deal cash ($65,500)</b> is based on Rosebud's actual all-in cost — a realistic flip-and-hold figure for Pheasant.</li>
+      <li><b>Real estate</b> is included from the closing docs; Sunny's current balance sheet omits the homes and their notes, so her net-worth figure will look lower until that's reconciled.</li>
+    </ol>
+  </div>
+
+  <div class="actuals">
+    <div class="stat"><div class="s-lbl">Revenue · Jan–May</div><div class="s-val num">$192,673</div><div class="s-sub">from the financial report</div></div>
+    <div class="stat"><div class="s-lbl">Net income · Jan–May</div><div class="s-val num">$93,079</div><div class="s-sub">≈ $18,600 / mo</div></div>
+    <div class="stat"><div class="s-lbl">Rosebud · all-in cost</div><div class="s-val num">$65,563</div><div class="s-sub">closing + rehab (job journal)</div></div>
+  </div>
+
   <div class="foot">
-    <strong>Prototype.</strong> Income, property and mortgage figures are live from the PJ&amp;CJ master data. Amber dashed fields — operating cash, credit lines, and operating expenses — are <strong>placeholders awaiting Phillip / Sunny</strong>; type real values and every number, the forecast, and the signal update live. Pheasant is a placeholder pending offer acceptance. Income shown is the forward run-rate (the G5 plasma-cutter lease rolls off after July). Building lease is paid annually in advance, shown here as a monthly equivalent.
+    <strong>Prototype for review.</strong> Income and expense figures are from PJ&CJ's Jan–May financials (the income statement Sunny confirmed is reliable) plus current lease/rent run-rates from the master. Balance-sheet items — cash on hand, asset values, net worth — are <strong>provisional while Sunny reworks the balance sheet with Phillip</strong>; in particular the real estate isn't yet on her balance sheet. LOC/HELOC are blank pending Phillip. Owner draws and consulting/commission are editable so different assumptions can be tested live. Deal-specific job costs are excluded from the monthly run-rate.
   </div>
 
 </div>
-
 <script>
   const $=id=>document.getElementById(id);
-  const IN=9708, KNOWN=3588;                 // live monthly money-in and known costs
-  const fmt=n=>(n<0?'−$':'$')+Math.abs(Math.round(n)).toLocaleString();
+  const FIXED_IN = 3475+2000+3800+433;   // leases, building, rents, loan
+  const HOME_MORT = 2138;
+  const fmt=n=>(n<0?'\u2212$':'$')+Math.abs(Math.round(n)).toLocaleString();
   const months=['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun'];
-
-  function val(id){return Math.max(0, parseFloat(($(id).value||'0').replace(/[^0-9.]/g,''))||0);}
+  const val=id=>Math.max(0,parseFloat(($(id).value||'0').toString().replace(/[^0-9.]/g,''))||0);
 
   function recompute(){
-    const cash=val('cash'), loc=val('loc'), heloc=val('heloc'),
-          deal=val('deal'), buffer=val('buffer'), opex=val('opex');
-    // keep the two opex inputs in sync
-    if($('opex2').value!==String(opex||'')) $('opex2').value = opex? String(opex):'0';
+    const consulting=val('consulting'), commission=val('commission'),
+          opex=val('opex'), draws=val('draws'),
+          cash=val('cash'), loc=val('loc'), heloc=val('heloc'),
+          deal=val('deal'), buffer=val('buffer');
 
-    const net = IN - KNOWN - opex;
-    $('netVal').textContent=fmt(net);
-    $('netRow').textContent=fmt(net);
-    $('netVal').className='k-val num '+(net>=0?'pos':'neg');
-    $('netSub').textContent = opex>0 ? 'op. expenses included' : 'excludes op. expenses — add above';
+    const moneyIn = FIXED_IN + consulting + commission;
+    const moneyOut = opex + HOME_MORT + draws;
+    const net = moneyIn - moneyOut;
 
-    const credit = loc+heloc;
-    const free = cash + credit - deal;
+    $('rowIn').textContent=fmt(moneyIn);
+    $('rowNet').textContent=fmt(net);
+    $('kIn').textContent=fmt(moneyIn);
+    $('kOut').textContent=fmt(moneyOut);
+    $('kNet').textContent=fmt(net); $('kNet').className='k-val num '+(net>=0?'pos':'neg');
+    $('kCash').textContent=fmt(cash);
+    $('netShow').value=fmt(net);
+
+    const free = cash+loc+heloc-deal;
     $('freecap').textContent=fmt(free);
 
-    // 12-month operating-cash projection, starting after the new deal draws cash
-    let bal = cash - deal, pts=[bal], minBal=bal;
-    for(let i=0;i<12;i++){ bal+=net; pts.push(bal); if(bal<minBal)minBal=bal; }
-    drawChart(pts, buffer);
+    let bal=cash-deal, pts=[bal], minBal=bal;
+    for(let i=0;i<12;i++){bal+=net;pts.push(bal);if(bal<minBal)minBal=bal;}
+    drawChart(pts,buffer);
 
-    // verdict
-    const hasLiquidity = (cash+credit)>0;
     let word,note,on;
-    if(!hasLiquidity){ word='Enter liquidity'; note='Type your available cash, credit line, and next-deal cost to get a reading.'; on=null; }
-    else if(minBal < 0){ word='Insufficient'; note='This deal drives operating cash negative within 12 months. Credit line would have to cover '+fmt(-minBal)+'.'; on='r'; }
-    else if(minBal < buffer){ word='Tight'; note='Doable, but operating cash dips to '+fmt(minBal)+', below your '+fmt(buffer)+' buffer. Watch the timing.'; on='a'; }
-    else { word='Safe to proceed'; note='Operating cash stays above your buffer all 12 months (low point '+fmt(minBal)+').'; on='g'; }
+    if(loc+heloc===0 && deal>cash){
+      word='Add credit lines'; on='r';
+      note='A '+fmt(deal)+' deal exceeds cash on hand. Enter LOC/HELOC to see if credit bridges it — your '+fmt(net)+'/mo surplus refills fast.';
+    } else if(minBal<0){
+      word='Insufficient'; on='r';
+      note='Cash goes negative (low point '+fmt(minBal)+'). Credit would need to cover the gap.';
+    } else if(minBal<buffer){
+      word='Tight'; on='a';
+      note='Doable, but cash dips to '+fmt(minBal)+', under your '+fmt(buffer)+' buffer.';
+    } else {
+      word='Safe to proceed'; on='g';
+      note='Cash stays above buffer all 12 months (low point '+fmt(minBal)+').';
+    }
     $('verdictWord').textContent=word; $('verdictNote').textContent=note;
     ['bR','bA','bG'].forEach(b=>$(b).className='bulb '+b.slice(1).toLowerCase());
-    if(on)$('b'+on.toUpperCase()).className='bulb on '+on;
+    $('b'+on.toUpperCase()).className='bulb on '+on;
   }
-
-  function drawChart(pts, buffer){
-    const W=640,H=260,pad={l:54,r:14,t:16,b:26};
+  function drawChart(pts,buffer){
+    const W=640,H=250,pad={l:56,r:14,t:14,b:24};
     const xs=(W-pad.l-pad.r)/(pts.length-1);
-    const lo=Math.min(0,buffer,...pts), hi=Math.max(buffer,...pts,1);
-    const span=(hi-lo)||1;
-    const Y=v=>pad.t+(H-pad.t-pad.b)*(1-(v-lo)/span);
-    const X=i=>pad.l+xs*i;
-    let g='';
-    // zero + buffer reference lines
-    g+=`<line x1="${pad.l}" y1="${Y(0)}" x2="${W-pad.r}" y2="${Y(0)}" stroke="#c9d2da" stroke-width="1"/>`;
+    const lo=Math.min(0,buffer,...pts), hi=Math.max(buffer,...pts,1), span=(hi-lo)||1;
+    const Y=v=>pad.t+(H-pad.t-pad.b)*(1-(v-lo)/span), X=i=>pad.l+xs*i;
+    let g=`<line x1="${pad.l}" y1="${Y(0)}" x2="${W-pad.r}" y2="${Y(0)}" stroke="#c9d2da"/>`;
     g+=`<text x="6" y="${Y(0)+4}" font-size="10" fill="#8a96a2" font-family="monospace">$0</text>`;
-    if(buffer>0){ g+=`<line x1="${pad.l}" y1="${Y(buffer)}" x2="${W-pad.r}" y2="${Y(buffer)}" stroke="#cf8a17" stroke-width="1" stroke-dasharray="4 4"/>`;
-      g+=`<text x="6" y="${Y(buffer)+4}" font-size="10" fill="#cf8a17" font-family="monospace">buf</text>`; }
-    // area + line
-    let d='', area='';
-    pts.forEach((v,i)=>{ const x=X(i),y=Y(v); d+=(i?'L':'M')+x+' '+y+' '; });
-    area=`M${X(0)} ${Y(0)} `+pts.map((v,i)=>'L'+X(i)+' '+Y(v)).join(' ')+` L${X(pts.length-1)} ${Y(0)} Z`;
-    g+=`<path d="${area}" fill="#0e7c86" opacity="0.08"/>`;
-    g+=`<path d="${d}" fill="none" stroke="#0e7c86" stroke-width="2.5"/>`;
-    pts.forEach((v,i)=>{ if(i%2===0||i===pts.length-1){ g+=`<circle cx="${X(i)}" cy="${Y(v)}" r="2.6" fill="#0e7c86"/>`; } });
-    // x labels (every other month)
-    months.forEach((m,i)=>{ if(i%2===0){ g+=`<text x="${X(i+1)}" y="${H-8}" font-size="10" fill="#8a96a2" text-anchor="middle" font-family="monospace">${m}</text>`; } });
-    // start label
-    g+=`<text x="${X(0)}" y="${H-8}" font-size="10" fill="#8a96a2" text-anchor="middle" font-family="monospace">now</text>`;
+    if(buffer>0){g+=`<line x1="${pad.l}" y1="${Y(buffer)}" x2="${W-pad.r}" y2="${Y(buffer)}" stroke="#cf8a17" stroke-dasharray="4 4"/><text x="6" y="${Y(buffer)+4}" font-size="10" fill="#cf8a17" font-family="monospace">buf</text>`;}
+    let d='';pts.forEach((v,i)=>d+=(i?'L':'M')+X(i)+' '+Y(v)+' ');
+    const area=`M${X(0)} ${Y(0)} `+pts.map((v,i)=>'L'+X(i)+' '+Y(v)).join(' ')+` L${X(pts.length-1)} ${Y(0)} Z`;
+    g+=`<path d="${area}" fill="#0e7c86" opacity="0.08"/><path d="${d}" fill="none" stroke="#0e7c86" stroke-width="2.5"/>`;
+    pts.forEach((v,i)=>{if(i%2===0||i===pts.length-1)g+=`<circle cx="${X(i)}" cy="${Y(v)}" r="2.6" fill="#0e7c86"/>`;});
+    months.forEach((m,i)=>{if(i%2===0)g+=`<text x="${X(i+1)}" y="${H-7}" font-size="10" fill="#8a96a2" text-anchor="middle" font-family="monospace">${m}</text>`;});
+    g+=`<text x="${X(0)}" y="${H-7}" font-size="10" fill="#8a96a2" text-anchor="middle" font-family="monospace">now</text>`;
     $('chart').innerHTML=g;
   }
-
-  ['cash','loc','heloc','deal','buffer','opex'].forEach(id=>$(id).addEventListener('input',recompute));
-  $('opex2').addEventListener('input',()=>{ $('opex').value=$('opex2').value.replace(/[^0-9.]/g,''); recompute(); });
+  ['consulting','commission','opex','draws','cash','loc','heloc','deal','buffer'].forEach(id=>$(id).addEventListener('input',recompute));
   recompute();
 </script>
 </body>
